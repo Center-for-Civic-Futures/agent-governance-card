@@ -40,6 +40,6 @@
       }
     ],
     "expert_label": "provisional",
-    "note": "Contract 2 (v0.3, F2): the high-impact determination is pending, so the card COMPLETES with the operational tier marked provisional and a to_resolve recommendation \u2014 the contract-1 deployment block is retired. A provisional Low is still fragile: it may rise to High once determined."
+    "note": "The high-impact determination is pending, so the card COMPLETES with the operational tier marked provisional and a to_resolve recommendation. A provisional Low is still fragile: it may rise to High once determined."
   }
 }

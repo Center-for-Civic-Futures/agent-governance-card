@@ -34,7 +34,7 @@
     "operational_tier": "moderate",
     "tier_floored_by_unknown": true,
     "expert_label": "moderate",
-    "note": "R3/R6 unknown-floor rule: every answered input points to LOW, but one operational-tier input (4.3 severity) is unknown, so the tier cannot be Low -> floored to MODERATE until resolved. Directly kills the v0.1 vector where an unknown silently defaulted toward Low (observed live on state-servicenow P2). Contract 2 adds: floored-only Moderate routes to the reduced Part-2 set (automation_detail + oversight, F7).",
+    "note": "Unknown-floor rule: every answered input points to LOW, but one operational-tier input (4.3 severity) is unknown, so the tier cannot be Low -> floored to MODERATE until resolved. An unknown never defaults toward Low. A floored-only Moderate routes to the reduced Part 2 set (automation and approval + oversight and monitoring).",
     "part2_groups": [
       "automation_approval", "oversight_monitoring"
     ],

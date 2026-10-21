@@ -37,7 +37,7 @@ never blocks. Its recommendations become gates only where an adopting
 authority, such as a state CIO or an agency directive, makes a completed card
 a precondition for production access.
 
-**Card v0.4 · derivation contract 3.** The schema has twelve dimensions,
+The schema has twelve dimensions,
 spanning what an agent does and touches, who answers for it, its risks, and
 more. Across them, 47 fields: 29 in Part 1 for every in-scope agent, 18 in
 Part 2 at Moderate and High. For each field the schema holds the
@@ -98,7 +98,7 @@ states currently lack.
 | Path | What it is |
 |---|---|
 | [`skills/agent-governance-card/SKILL.md`](skills/agent-governance-card/SKILL.md) | The interview procedure. Holds no field content — it reads the schema. |
-| [`skills/agent-governance-card/references/schema.snapshot.yaml`](skills/agent-governance-card/references/schema.snapshot.yaml) | The card: every field, value, gloss and derivation rule, with `card_version` and `derivation_contract_version` in its header. |
+| [`skills/agent-governance-card/references/schema.snapshot.yaml`](skills/agent-governance-card/references/schema.snapshot.yaml) | The card: every field, value, gloss and derivation rule,. |
 | [`skills/agent-governance-card/scripts/derive_impact.py`](skills/agent-governance-card/scripts/derive_impact.py) | The deterministic Impact Level engine, with its regression cases under `scripts/anchors/`. |
 | [`skills/agent-governance-card/templates/`](skills/agent-governance-card/templates/) | The blank card (fill it by hand if you prefer) and the addendum for platform deployments. |
 | [`skills/agent-governance-card/examples/`](skills/agent-governance-card/examples/) | Two worked cards: a High-tier composite and a real deployment filled from public sources. |
@@ -112,7 +112,3 @@ for Civic Futures (CCF)**. Copyright © 2026 The Agentic State. Released under
 fill in, with credit:
 
 > Agent Governance Card, developed by The Agentic State with the Center for Civic Futures, licensed CC BY 4.0. https://github.com/The-Agentic-State/agent-governance-card
-
-If you adapt the card for your own jurisdiction, keep `card_version` and
-`derivation_contract_version` in your fills, so a card can still be read
-against the rules that produced it.

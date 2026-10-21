@@ -1,28 +1,7 @@
-# Agent Governance Card — canonical machine-readable schema (card v0.4)
-# Canonical source of truth for the card's fields, interview questions, and
-# Impact-Level derivation. Any face of the card (skill, form, document, table,
-# slides) should read THIS file; do not carry frozen copies of the fields.
-#
-# v0.4 (2026-09-14) ports the schema to the shape of the shared document
-# "260909 AGC – Schema" (repo copy: 2_working-notes/260914_schema-v04-from-gdoc_CORRECT.md;
-# field map and change list: 2_working-notes/260914_v04-field-map.md):
-#   - field ids are now the document's numbers ("2.5"), quoted strings; the
-#     C*/E* handles of v0.2-v0.3 are retired everywhere (schema, engine,
-#     anchors, templates, examples);
-#   - twelve named dimensions (see `dimensions` below); Risk moved up to 5,
-#     next to Autonomy and human control;
-#   - two new fields: 1.5 Location (public) and 2.4 Hosting and platform
-#     (the hosting half of the old "model & how it decides" field); 2.3 Model
-#     keeps the model half;
-#   - 10.3 Oversight cadence gains periodic_interval;
-#   - display symbols retired except the public-layer triangle (▲), which the
-#     `public: true` tag carries here.
-#   Derivation contract bumped 2 -> 3 for the id rename ONLY: inputs, enum
-#   values, and rules are unchanged from contract 2.
-# History: promoted 2026-07-23 from the frozen v0.2 stress-test instrument;
-# v0.3 (2026-07-24) applied the legal review (2_working-notes/260724_v03-decisions.md):
-# the card NEVER blocks, determination record, disclosure at Core, reduced
-# Part 2 for unknown-floored Moderates.
+# Agent Governance Card — machine-readable schema
+# Source of truth for the card's fields, interview questions, and Impact Level
+# derivation. Any form of the card (skill, form, document, table, slides)
+# should read this file rather than carry its own copy of the fields.
 #
 # Two stability tiers:
 #   - CONTENT LAYER (freely editable): questions, glosses, help text, examples,
@@ -32,12 +11,8 @@
 #     Impact derivation (2.5, 3.1, 4.1, 4.2, 4.3, 4.4) plus the impact_derivation
 #     rules below. Changing any of these requires bumping
 #     derivation_contract_version; the derivation engine
-#     (skills/agent-governance-card/scripts/derive_impact.py) is pinned to a contract version and
+#     (scripts/derive_impact.py in the skill) is pinned to a contract version and
 #     refuses to compute on a mismatch rather than miscompute a tier.
-#
-# After editing: run `python3 schema/build.py` to refresh the JSON mirror and
-# manifest, then `python3 schema/build.py --check` to verify nothing drifted
-# (see schema/README.md).
 
 schema: agent-governance-card
 card_version: "0.4"
@@ -54,13 +29,13 @@ adoption: >
   gates only where an adopting directive makes the completed card a precondition
   for production access.
 
-# R6: the answer-status vocabulary is part of the card, not just the instrument.
+# The answer-status vocabulary is part of the card.
 answer_statuses: [answered, unknown, not_applicable, not_in_place]
 # unknown = the fact exists but can't be determined; not_in_place = the mechanism
 # does not exist (a governance finding). Both are legal everywhere — but an unknown
 # on an operational-tier derivation input floors the tier at Moderate (see below).
 
-# R5: scope trigger + unit of analysis (front matter; not fields).
+# Scope trigger + unit of analysis (front matter; not fields).
 scope_trigger:
   card_required_if: >
     (interacts directly with the public) OR (materially influences a decision-making
@@ -169,11 +144,10 @@ core_fields:
     public: true
     values: [assistant_copilot, autonomous_single, orchestrator_subagents, agent_as_a_service]
     gloss: >
-      R11 — a single conversational assistant with no tool access is
+      A single conversational assistant with no tool access is
       assistant_copilot; so is one whose tools can only READ (retrieval, lookups).
       Once it can change anything outside the conversation (send, write, book,
       file), it is autonomous_single — or orchestrator_subagents if it spawns agents
-      (v0.3 boundary clarification).
   - id: "1.5"
     label: "Location"
     question: "Where does it run and how is it reached? What is the address of the service, page, or application where the agent operates, and the code repository, if there is one?"
@@ -181,7 +155,7 @@ core_fields:
     type: text
     public: true
     note: >
-      v0.4 (new) — where the agent is reached and where its code lives. Public: a
+      Where the agent is reached and where its code lives. Public: a
       register entry that cannot point to the service it describes is not a register
       entry.
   - id: "2.1"
@@ -192,7 +166,7 @@ core_fields:
     comparability: true
     values: [information_drafting, official_communication, business_transaction, computer_use, code_execution, data_analysis, physical_actuation]
     gloss: >
-      R11 — no-tool conversational assistant = information_drafting only.
+      No-tool conversational assistant = information_drafting only.
   - id: "2.2"
     label: "Capability specifics"
     question: "What exactly does the agent produce or do?"
@@ -204,9 +178,9 @@ core_fields:
     group: capabilities_impact
     type: text
     note: >
-      v0.4 — narrowed to the model(s) only: provider, name, version. 'How it
-      decides' (plans steps, selects tools) is carried by 1.4 agent type, 4.1
-      autonomy level, and 3.3 tools; hosting and platform moved to 2.4.
+      The model(s) only: provider, name, version. How the agent decides (plans
+      steps, selects tools) is carried by 1.4 agent type, 4.1 autonomy level, and
+      3.3 tools; hosting and platform are in 2.4.
   - id: "2.4"
     label: "Hosting and platform"
     question: "Where does it run, and what is it built on? Hosting: state environment, vendor cloud, on premises, or a mix. Platform: the framework or product it is assembled in."
@@ -214,8 +188,7 @@ core_fields:
     type: enum_plus_text
     values: [state_environment, vendor_cloud, on_premises, hybrid]
     note: >
-      v0.4 (new) — the hosting half of the former 'model & how it decides' field
-      (2.3 keeps the model half). Hosting decides whose security perimeter the agent
+      Hosting decides whose security perimeter the agent
       sits in and whose logs a reviewer can demand; the platform (free text) decides
       what the agent can be given access to and what leaving costs (see 12.3).
   - id: "2.5"
@@ -233,8 +206,8 @@ core_fields:
     comparability: true
     values: [high_impact, presumed_high_but_determined_not, not_high_impact, not_yet_determined]
     note: >
-      R1 — faithful M-25-21 test (was a Y/N). Categories (a)-(f) verbatim from the
-      M-25-21 §5 "High-Impact AI" definition (verified against the memo 2026-07-24).
+      Faithful M-25-21 test. Categories (a)-(f) verbatim from the
+      M-25-21 §5 "High-Impact AI" definition.
       The memo does not define "principal basis"; the card reads it as: the decision
       would likely differ without the agent's output (interpretive gloss, ours —
       memo fn 27 requires only that the output "actually serve as a principal
@@ -242,7 +215,7 @@ core_fields:
       possible whether there is or is not human oversight" (§4(a)). §6 lists
       purposes presumed high-impact (a-o); stepping down from the presumption
       requires a determination record (2.6 — M-25-21 §4(a) written-documentation
-      requirement). not_yet_determined no longer blocks (v0.3): the card completes
+      requirement). not_yet_determined does not block: the card completes
       with a PROVISIONAL level and a to_resolve item — see impact_derivation. Drives
       OMB high-impact status (output 1 of the derivation).
   - id: "2.6"
@@ -251,7 +224,7 @@ core_fields:
     group: capabilities_impact
     type: text
     note: >
-      v0.3 (legal review F8) — REQUIRED when 2.5 = presumed_high_but_determined_not:
+      REQUIRED when 2.5 = presumed_high_but_determined_not:
       M-25-21 §4(a) requires written documentation by an appropriate agency official
       for a determination that a presumed-high use case is not high-impact.
       Recommended for every other answered 2.5. Without it, the card's most
@@ -264,7 +237,7 @@ core_fields:
     comparability: true
     values: [none_public, internal, personal_pii, sensitive]
     gloss: >
-      R4 — classify by the most sensitive data the agent touches in operation (incl.
+      Classify by the most sensitive data the agent touches in operation (incl.
       user input), not the knowledge-store classification.
   - id: "3.2"
     label: "Datasets / source of truth"
@@ -285,7 +258,7 @@ core_fields:
     public: true
     values: [informs, recommends, acts_with_approval, acts_without_approval]
     gloss: >
-      R4 — 'acts' includes any effect outside the conversation (notifications,
+      'Acts' includes any effect outside the conversation (notifications,
       flags, records, messages).
   - id: "4.2"
     label: "Reversibility of its actions"
@@ -299,7 +272,7 @@ core_fields:
     comparability: true
     values: [fully_reversible, reversible_with_effort, hard_to_reverse]
     gloss: >
-      R2 — judged at the point of external effect, not at generation.
+      Judged at the point of external effect, not at generation.
     note: >
       Judged as the effect on the affected person at the point of external effect,
       not as whether the artefact can be edited: a payment can be clawed back and a
@@ -313,7 +286,7 @@ core_fields:
     comparability: true
     values: [negligible, limited, serious, severe]
     note: >
-      R2 — worst plausible consequence at operating scale, a second axis alongside
+      Worst plausible consequence at operating scale, a second axis alongside
       reversibility. Anchors (carried in the document's rationale): negligible =
       stays inside the team, few people, no money, no rights; limited = anything
       published outside the team or with a financial effect; serious = wrong
@@ -331,13 +304,13 @@ core_fields:
     type: enum
     values: ["no", yes_with_compensating_controls, yes_unresolved]  # "no" quoted: bare no is YAML-1.1 False
     note: >
-      R12 — was Y/N. Trifecta = (a) untrusted/external input + (b) non-public
+      Trifecta = (a) untrusted/external input + (b) non-public
       personal/protected data, judged INDEPENDENTLY of 3.1 + (c) actions that change
       anything outside the conversation, all without a human in the loop.
       yes_with_compensating_controls = mitigated (name controls). yes_unresolved
       derives High and adds a to_resolve item: the card strongly recommends not
       entering production until one trifecta leg is broken or named compensating
-      controls are in place (v0.3 — recommendation, not prohibition; see adoption).
+      controls are in place (a recommendation, not a prohibition; see adoption).
   - id: "4.5"
     label: "How a person stops or overrides it"
     question: "How does a person stop or override it?"
@@ -350,7 +323,7 @@ core_fields:
     type: list
     suggested_values: [confabulation_inaccurate_output, harmful_bias, data_privacy, information_security]
     note: >
-      R11 — base risks every AI system carries (NIST AI 600-1 named categories).
+      Base risks every AI system carries (NIST AI 600-1 named categories).
   - id: "5.2"
     label: "Which agentic hazards apply"
     question: "Which agentic hazards apply? A system with no tools at all marks this not applicable — that is a complete answer."
@@ -358,9 +331,9 @@ core_fields:
     type: list
     suggested_values: [prompt_injection, unsafe_irreversible_actuation, over_privileged_tools, memory_poisoning, cascading_failure]
     note: >
-      R11 (new) — answer if the agent acts on tools/systems or takes multi-step
-      autonomous action; only a system with NO tools marks this not_applicable. v0.3
-      boundary clarification: retrieval-only grounding (RAG, document/web lookup)
+      Answer if the agent acts on tools/systems or takes multi-step
+      autonomous action; only a system with NO tools marks this not_applicable.
+      Retrieval-only grounding (RAG, document/web lookup)
       still answers this field — retrieved content is untrusted input, so
       prompt_injection applies at minimum, even with no write-capable tools.
   - id: "5.3"
@@ -369,7 +342,7 @@ core_fields:
     group: risk
     type: bool_plus_link
     gloss: >
-      R4 — a register's 'impact assessed: yes' flag or a framework mapping is NOT
+      A register's 'impact assessed: yes' flag or a framework mapping is NOT
       testing; Yes only for an actual evaluation of THIS system, with results.
   - id: "5.4"
     label: "Public plain-language summary published"
@@ -384,7 +357,7 @@ core_fields:
     type: bool_plus_text
     public: true
     note: >
-      v0.3 (legal review F6) — promoted from Extended (was E14a): disclosure is a
+      Disclosure is a
       Core question for any public-facing agent, whatever the Impact Level; AI
       disclosure is where states have legislated first. An internal-only agent may
       answer not_applicable — a complete answer.
@@ -401,14 +374,14 @@ core_fields:
     type: text
     public: true
     note: >
-      R10 — contact point is now public (ATRS Tier 1).
+      Contact point is public (ATRS Tier 1).
   - id: "6.3"
     label: "Vendor & exit basics"
     question: "Who built and maintains the agent: an outside vendor or an in-house team? If a vendor, under what contract vehicle? How easy is it for the state to switch any of the three: model, platform, or vendor?"
     group: accountability
     type: text
     note: >
-      v0.4 — reworded around three parties: the model provider (2.3), the platform
+      Three parties: the model provider (2.3), the platform
       (2.4), and the vendor who built and maintains the agent (this field). Lock-in
       is impact-independent; every agent answers one line here. Full exit checklist
       in 12.3.
@@ -421,7 +394,7 @@ core_fields:
     public: true
     values: [administrative_functions, cybersecurity, emergency_management, energy_and_environment, government_benefits_processing, health_and_medical, human_resources, information_technology, international_affairs, law_enforcement, procurement_and_financial_management, science, service_delivery, transportation, other]
     note: >
-      OMB M-25-21 Use Case Topic Area, verbatim (unchanged; desk-audit B faithful).
+      OMB M-25-21 Use Case Topic Area, verbatim.
   - id: "7.2"
     label: "Lifecycle stage"
     question: "Where is it in its lifecycle?"
@@ -431,7 +404,7 @@ core_fields:
     public: true
     values: [pre_deployment, pilot, deployed, retired]
     note: >
-      R7 — pre_deployment added (OMB development-stage, complete). On retirement the
+      pre_deployment covers the OMB development stage. On retirement the
       card is closed, not deleted.
 
 extended_fields:
@@ -495,7 +468,7 @@ extended_fields:
     type: enum
     values: [event_triggered, periodic_interval, continuous]
     note: >
-      v0.4 — periodic_interval added between event_triggered and continuous. For
+      periodic_interval sits between event_triggered and continuous. For
       agents, continuous is usually needed — approval-at-launch alone breaks down.
   - id: "10.4"
     label: "Independent review"
@@ -547,8 +520,8 @@ extended_fields:
     group: cost_lockin
     type: text
     note: >
-      R8 — anchored to OMB M-25-22 (v0.1's 'no precedent' claim was false).
-      Checklist verified against the memo 2026-07-24: knowledge transfer +
+      Anchored to OMB M-25-22.
+      Checklist mapped to the memo: knowledge transfer +
       portability + licensing/ pricing transparency = §4(c)(ii); rights to
       code/models = §4(d)(iii)(C); rollback = §4(d)(iii)(F); vendor-change notice =
       §4(d)(iii)(G); closeout data-transfer plan = §4(f)(i). The parenthetical
@@ -556,11 +529,9 @@ extended_fields:
       "data and model portability", not memo text.
 
 # ---- Derived signal: Impact Level ----
-# R3: two outputs computed separately; final level = the higher. Contract 2
-# (v0.3, legal review F2/F7): the card NEVER blocks — verdicts that halted in
-# contract 1 complete with a provisional level and a to_resolve list. Contract 3
-# (v0.4): ids renamed to the document numbers; inputs, values, rules unchanged.
-# Implemented in skills/agent-governance-card/scripts/derive_impact.py (pinned to
+# Two outputs computed separately; final level = the higher. The card never
+# blocks: unresolved states complete with a provisional level and a to_resolve
+# list. Implemented in scripts/derive_impact.py in the skill (pinned to
 # derivation_contract_version above).
 impact_derivation:
   output_1_omb_high_impact_status:
@@ -571,7 +542,7 @@ impact_derivation:
       2.5 == not_yet_determined OR 2.5 unanswered — the card still completes: the
       final level is the operational tier marked PROVISIONAL (it may rise to High
       once the determination is made), and completing the OMB determination is
-      added to to_resolve. Contract 1's cannot-deploy block is retired (F2).
+      added to to_resolve.
   output_2_operational_tier:
     inputs: ["3.1", "4.1", "4.2", "4.3", "4.4"]
     high_if_any:
@@ -584,7 +555,7 @@ impact_derivation:
       - "severity(4.3) >= limited AND 4.1 != informs"
       - "4.4 == yes_with_compensating_controls"
     low: otherwise
-    unknown_floor: "R3/R6 — if any operational-tier input is unknown, tier cannot be Low (floored at Moderate)."
+    unknown_floor: "If any operational-tier input is unknown, tier cannot be Low (floored at Moderate)."
   final_level: >
     higher of output 1 and output 2. If output 1 is pending, final level = the
     operational tier with level_provisional = true.
@@ -597,17 +568,16 @@ impact_derivation:
     place — then re-answer yes_with_compensating_controls"; any unknown
     derivation input -> "resolve <field>; the tier stays floored at Moderate
     until then".
-  reviewer_confirmation: "R4 — a Low result for any public-facing agent must be confirmed by a named reviewer outside the build team."
+  reviewer_confirmation: "A Low result for any public-facing agent must be confirmed by a named reviewer outside the build team."
   part2_required_for: [moderate, high]
   part2_when_floored: >
-    F7 (v0.3) — when Moderate ONLY because of the unknown-floor (no substantive
+    When Moderate ONLY because of the unknown-floor (no substantive
     trigger fired), Part 2 narrows to dimensions 9 (automation_approval) and 10
     (oversight_monitoring), fields 9.1-10.5, plus a resolve-by suggestion,
     instead of all of Part 2. Honesty should cost 7 questions, not 18. A
     substantive Moderate/High still completes all of Part 2.
-  high_additionally_requires:   # R9 — full OMB M-25-21 §4(b) minimum-practice set
-    # Verified against the memo 2026-07-24: pre_deployment_testing added (§4(b)(i),
-    # was missing); independent_review and named_senior_signoff are components of the
+  high_additionally_requires:   # full OMB M-25-21 §4(b) minimum-practice set
+    # Mapped to the memo: pre_deployment_testing is §4(b)(i); independent_review and named_senior_signoff are components of the
     # impact assessment (§4(b)(ii)(F) and (G)); "tested" in tested_failsafe_killswitch
     # is the card's strengthening — the memo asks for an "appropriate fail-safe",
     # "when practicable" (§4(b)(v)).

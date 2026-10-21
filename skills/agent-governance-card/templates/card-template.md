@@ -1,8 +1,8 @@
 # AGENT GOVERNANCE CARD — ⟨agent name⟩
 
-> Blank card, card **v0.4**. Rendered from the canonical schema
-> (`schema/agent-governance-card.schema.yaml`, derivation contract 3) — the
-> schema is authoritative if this template ever disagrees. Works standalone:
+> Blank card, rendered from the schema
+> (`references/schema.snapshot.yaml`) — the schema is authoritative if this
+> template ever disagrees. Works standalone:
 > fill it by hand, or let the `agent-governance-card` skill interview you.
 > **The card never blocks:** whatever comes up, it completes — unresolved
 > items land in **To resolve** as strong recommendations.
@@ -11,7 +11,6 @@
 |---|---|
 | **Filled by** | ⟨name / role⟩ |
 | **Date** | ⟨YYYY-MM-DD⟩ |
-| **Card version** | 0.4 (derivation contract 3) |
 | **Impact Level** | ⟨computed below⟩ |
 
 **How to answer.** Every field takes a status: `answered` (you have the fact) ·

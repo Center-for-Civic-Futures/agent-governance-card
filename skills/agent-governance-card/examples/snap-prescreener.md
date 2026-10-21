@@ -1,12 +1,9 @@
 # Worked example — SNAP eligibility pre-screener
 
 > What a completed run of the `agent-governance-card` skill emits. An
-> **illustrative composite**: the honest fill below extends the Face-C mockup
-> vignette; the "gamed variant" sidebar mirrors stress-test anchor
-> `anchor-5-snap-assist.json`. Answers date from the 2026-07-23 fill under
-> card v0.2; re-rendered 2026-09-14 to card **v0.4** numbering (derivation
-> contract 3). The two fields new in v0.4 (1.5, 2.4) were not asked in the
-> original fill and are marked as such. Both tiers verified with
+> **illustrative composite**, not a real deployment. The "gamed variant"
+> sidebar mirrors the engine's regression case
+> `scripts/anchors/anchor-5-snap-assist.json`. Both tiers verified with
 > `scripts/derive_impact.py`.
 
 # AGENT GOVERNANCE CARD — SNAP eligibility pre-screener
@@ -14,8 +11,7 @@
 | | |
 |---|---|
 | **Filled by** | Benefits-modernization product team (with the AGC skill) |
-| **Date** | 2026-07-23 (fill) · re-rendered 2026-09-14 |
-| **Card version** | 0.4 (derivation contract 3) |
+| **Date** | 2026-07-23 |
 | **Impact Level** | **HIGH** — driven by output ① (OMB high-impact status) |
 
 ## Part 1
@@ -30,7 +26,7 @@
   give residents an early eligibility read before they file a full application.
 - **1.4 Agent type ▲** — answered: `assistant_copilot`
 - **1.5 Location ▲** — unknown: the state benefits portal (chat widget); exact
-  address and code repository not recorded in the 2026-07 fill.
+  address and code repository not recorded.
 
 ### 2 Capabilities and impact
 - **2.1 Capability** — answered: `information_drafting`, `data_analysis`
@@ -158,7 +154,7 @@ named senior sign-off.
 
 ## Recorded gaps
 
-- 1.5 — location `unknown` (not asked in the 2026-07 fill)
+- 1.5 — location `unknown` (exact address and repository not recorded)
 - 8.1 — per-agent service identity `not_in_place` (runs on a shared account)
 - 10.2 — live monitoring `not_in_place`
 - 10.4 — independent review `unknown` (no named reviewer outside the build team)
@@ -175,8 +171,6 @@ named senior sign-off.
 
 ```yaml
 # machine-readable values (excerpt — derivation inputs)
-card_version: "0.4"
-derivation_contract_version: 3
 fields:
   "2.5": {status: answered, value: high_impact}
   "3.1": {status: answered, value: personal_pii}

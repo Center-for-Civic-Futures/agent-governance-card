@@ -1,6 +1,6 @@
 # DEPLOYMENT ADDENDUM — ⟨context/unit⟩ · ⟨agent name⟩
 
-> Card v0.4 platform pattern (schema `unit_of_analysis`): a platform or product
+> Platform pattern (schema `unit_of_analysis`): a platform or product
 > used by many units files **one parent card** for the shared layer plus **one
 > short addendum like this per deployment context**. The parent card answers
 > everything about the shared layer (model, hosting and platform, vendor,
@@ -11,7 +11,7 @@
 
 | | |
 |---|---|
-| **Parent card** | ⟨link/id + parent card version⟩ |
+| **Parent card** | ⟨link/id of the parent card⟩ |
 | **Deploying unit + contact** | ⟨unit, contact role⟩ |
 | **Filled by / date** | ⟨name/role · YYYY-MM-DD⟩ |
 | **Impact Level (this context)** | ⟨inherited from parent / re-derived: LOW · MODERATE · HIGH⟩ ⟨(provisional)⟩ |

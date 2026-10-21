@@ -10,5 +10,5 @@
   },
   "_expected": {"impact_level": "moderate", "omb_high_impact_status": "not_high_impact",
     "operational_tier": "moderate", "expert_label": "moderate",
-    "note": "Anchor 4: appointment booking. reversible_with_effort + limited severity keep it below HIGH; PII + acts hold it at MODERATE. Card and expert agree (v0.1 also moderate)."}
+    "note": "Anchor 4: appointment booking. reversible_with_effort + limited severity keep it below HIGH; PII + acts hold it at MODERATE. Card and expert agree."}
 }
