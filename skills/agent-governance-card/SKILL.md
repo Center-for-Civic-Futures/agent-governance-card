@@ -34,10 +34,9 @@ go-live**, not future promises.
 All field content — questions, enum values, glosses, help lists, derivation
 rules — lives in the **schema**, not in this file. Before asking anything,
 resolve and read the schema per
-[`references/how-to-read-schema.md`](references/how-to-read-schema.md), then
-**announce what you loaded**: card version, `updated` date, and which source
-you read it from (canonical file in this checkout · environment-provided copy ·
-the copy bundled with this skill).
+[`references/how-to-read-schema.md`](references/how-to-read-schema.md). Do not
+mention schema versions, contract numbers or dates to the team: they are
+internal.
 
 Field ids are the document's numbers (`"2.5"`, `"10.3"`): dimension number,
 dot, position. Faces show the number and the label together ("2.5 High-impact
@@ -59,7 +58,7 @@ the skill's engine needs updating first, and stop at collecting answers.
    future promises."* Timebox honestly: a full-card Core pass takes **~15–20
    minutes conversationally, up to ~40 for an evidence-based fill**; a quick
    scan ~3–5 minutes.
-   **The card never blocks (since v0.3).** Unresolved states are normal and welcome:
+   **The card never blocks.** Unresolved states are normal and welcome:
    whatever comes up, the run completes — it records them and recommends next
    steps (`to_resolve`). Never present a recommendation as a prohibition — the
    card is a voluntary instrument; its recommendations become gates only where
@@ -146,7 +145,7 @@ the skill's engine needs updating first, and stop at collecting answers.
   `presumed_high_but_determined_not` — who determined, in what role, when, and
   why (M-25-21 §4(a) requires written documentation for a step-down).
   Recommended for every other answered 2.5.
-- **Unknown-floored Moderate routes to the reduced Part 2** (F7): only
+- **Unknown-floored Moderate routes to the reduced Part 2**: only
   dimensions 9 Automation and approval and 10 Oversight and monitoring
   (`automation_approval` + `oversight_monitoring`, fields 9.1–10.5) plus a
   resolve-by suggestion — read `part2_groups` from the engine. A substantive
@@ -241,8 +240,7 @@ At the end, produce — following
    drove it**, the fired triggers, and the obligations for the level.
 2. **A YAML values block** — the same answers keyed to the schema ids
    (`"1.1"` … `"7.2"`, `"8.1"` … `"12.3"`, quoted), each as `{status, value}`, plus
-   `card_version`, `derivation_contract_version`, and **`mode: quick_scan |
-   full`** from this run — so the card can be filed, diffed, compared across
+   **`mode: quick_scan | full`** from this run — so the card can be filed, diffed, compared across
    states, and a quick scan can never masquerade as a filed card.
 3. **To resolve** — the engine's `to_resolve` recommendations (pending
    determination, unresolved red-line, unknown inputs), presented as what they
@@ -268,9 +266,7 @@ Worked examples of finished output:
 
 - **No canonical file, no environment copy** → use
   [`references/schema.snapshot.yaml`](references/schema.snapshot.yaml), the copy
-  published with this skill, and announce it as such (version + `updated`
-  date). It is authoritative for that card version; note only that a newer
-  card version may exist upstream.
+  published with this skill. It is authoritative.
 - **No code execution** → prose derivation (§4 fallback), flagged as such,
   with a recommendation to verify by engine before filing.
 - **Contract mismatch** (schema `derivation_contract_version` >

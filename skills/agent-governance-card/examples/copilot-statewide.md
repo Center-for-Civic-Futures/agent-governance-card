@@ -1,11 +1,8 @@
 # Worked example — M365 Copilot, statewide (Connecticut)
 
-> A **real** completed fill, rendered in the card format: stress-test fill
-> `2_working-notes/260714_stress-test/fills_v0_2/copilot-statewide__P1.json`
-> (diligent persona, evidence-based, card v0.2, 2026-07-14). Re-rendered
-> 2026-09-14 to card **v0.4** numbering (derivation contract 3); the two fields
-> new in v0.4 (1.5, 2.4) are answered from facts already in the fill. Evidence
-> quotes are dropped here; the honest tension notes are kept — they model what
+> A card for a **real** deployment, filled from public sources only
+> (Connecticut's AI inventory and Policy AI-01). Evidence quotes are dropped
+> here; the honest tension notes are kept — they model what
 > a good fill looks like when the facts are genuinely contested. Tier verified
 > with `scripts/derive_impact.py`.
 
@@ -13,9 +10,8 @@
 
 | | |
 |---|---|
-| **Filled by** | P1 persona, from CT's AI inventory + Policy AI-01 (stress test) |
-| **Date** | 2026-07-14 (fill) · rendered 2026-07-23 · re-rendered 2026-09-14 |
-| **Card version** | 0.4 (derivation contract 3) |
+| **Filled by** | From public sources: CT's AI inventory + Policy AI-01 |
+| **Date** | 2026-07-14 |
 | **Impact Level** | **MODERATE** — driven by output ② (operational tier) |
 
 ## Part 1
@@ -172,17 +168,17 @@
 - 11.1 appeal route — `not_in_place`
 - 12.3 exit terms — `unknown` (no procurement record found)
 
-## Filler's closing note *(kept verbatim from the v0.2 fill — what honest ambiguity looks like; v0.4 numbers in brackets)*
+## Filler's closing note *(what honest ambiguity looks like)*
 
 > The card worked well for the product-classification and accountability
-> fields (C1–C6, C13–C17 [1.1–2.3, 4.5–7.1]) where the register and Policy
+> fields (1.1–2.3, 4.5–7.1) where the register and Policy
 > AI-01 give clear anchors. It fought me hardest on the high-impact /
-> material-influence question (C7 [2.5]) and the operational-tier inputs that
+> material-influence question (2.5) and the operational-tier inputs that
 > depend on facts CT never disclosed — licensing tier (Graph or web-only),
 > tenant logging, and agent/connector enablement — which forced several
-> Extended fields into unknown. The v0.2 "material influence counts even when
+> Extended fields into unknown. The "material influence counts even when
 > a human signs off" gloss sits in genuine tension with the register's
 > decision_making: No, and I flagged that rather than paper over it. Impact
-> came out Moderate (driven by C8 [3.1] = personal_pii), which honestly
+> came out Moderate (driven by 3.1 = personal_pii), which honestly
 > reflects a productivity copilot handling employee PII at multi-agency scale
 > without confirmed monitoring or appeal routes.

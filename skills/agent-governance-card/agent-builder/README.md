@@ -2,8 +2,7 @@
 
 For teams whose only assistant is Microsoft 365 Copilot. Agent Builder cannot
 install a skill, run a script, or read `.yaml`/`.md` files, so this folder
-carries the same card in the three shapes it accepts. Card **v0.4**, derivation
-contract **3**. Same rules as the skill; the difference is that the Impact
+carries the same card in the three shapes it accepts. Same rules as the skill; the difference is that the Impact
 Level is derived from the written rules, not the engine — so the card says so
 and asks for engine verification before filing.
 
