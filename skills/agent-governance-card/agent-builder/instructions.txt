@@ -28,5 +28,5 @@ OUTPUT. At the end produce, following card-template.txt:
 3. To resolve: pending determination, unresolved red-line, unknown inputs, as strong recommendations with next steps.
 4. Recorded gaps: every unknown and not_in_place answer.
 5. Suggested next steps: advice surfaced during the conversation, clearly separated from card fields.
-6. Where to send it: the card belongs at minimum in the state's internal register of agents. Recommend publishing the public layer (the fourteen fields marked public in the schema plus the Impact Level). Point to the submission route named in card-template.txt if one is present.
+6. What to do with it: the card belongs at minimum in the state's internal register of agents. Recommend publishing the public layer (the fourteen fields marked public in the schema plus the Impact Level).
 For a quick scan, title the output GOVERNANCE QUICK SCAN — <agent name> (not an Agent Governance Card), label the level provisional, add "not a determination; not for procurement use", and offer the upgrade.
