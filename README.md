@@ -99,9 +99,9 @@ picture states currently lack begins to form.
 
 ## Credits & license
 
-Developed by [The Agentic State](https://agenticstate.org) with the **Center
-for Civic Futures (CCF)**. Copyright © 2026 The Agentic State. Released under
+Developed by [The Agentic State](https://agenticstate.org) with the [Center
+for Civic Futures (CCF)](https://centerforcivicfutures.org). Copyright © 2026 The Agentic State. Released under
 [**CC BY 4.0**](LICENSE): use it, adapt it for your state, publish what you
 fill in, with credit:
 
-> Agent Governance Card, developed by The Agentic State with the Center for Civic Futures, licensed CC BY 4.0. https://github.com/The-Agentic-State/agent-governance-card
+> Agent Governance Card, developed by The Agentic State with Center for Civic Futures, licensed CC BY 4.0. https://github.com/Center-for-Civic-Futures/agent-governance-card
