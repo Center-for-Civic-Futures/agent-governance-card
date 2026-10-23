@@ -83,15 +83,8 @@ Once a card is filled, our invitation to states is to make it visible. At
 minimum it belongs in an internal register. We recommend publishing it openly
 for citizens to see, in particular the **public layer**: the fourteen fields,
 plus the Impact Level, that the schema sets aside for publication, marked ▲
-in the schema and the template. The card was built as the unit of a public
-register of agent deployments in government.
-
-A submission route to the Center for Civic Futures is in preparation. When
-it opens, a run of the skill will end with a link to a form with the public
-fields already filled in. Nothing is submitted until you review them and
-choose to send. CCF assembles submissions into a public register of
-government agents, so publishing a card also builds the comparative picture
-states currently lack.
+in the schema and the template. As more states publish, the comparative
+picture states currently lack begins to form.
 
 ## What's in this repository
 
