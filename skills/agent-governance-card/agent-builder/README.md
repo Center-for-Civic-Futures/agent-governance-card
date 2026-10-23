@@ -28,8 +28,8 @@ and asks for engine verification before filing.
   two `.txt` files in a SharePoint site instead and add that site or those
   files as the knowledge source; the instructions work unchanged.
 - **The level is prose-derived.** Before filing, re-check it with the engine:
-  `python3 scripts/derive_impact.py fill.json` from the published skill, or
-  through the CCF submission form. The engine is the source of truth for the
+  `python3 scripts/derive_impact.py fill.json` from the published skill.
+  The engine is the source of truth for the
   Impact Level; the written rules in `instructions.txt` restate it.
 
 Limits above are from Microsoft's Agent Builder documentation as of 2026-09-14:
